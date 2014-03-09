@@ -21,8 +21,8 @@ void testApp::draw(){
     ofSetCircleResolution(100);
     ofCircle(100, 500, 100);
     
-    ofSetCircleResolution(200);
-    ofCircle(400, 500, 100);
+    ofSetCircleResolution(500);
+    ofCircle(400, 300, 100);
     
 
     
