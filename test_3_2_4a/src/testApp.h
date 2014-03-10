@@ -18,11 +18,11 @@ class testApp : public ofBaseApp{
 		void windowResized(int w, int h);
         void audioRewuested(float*input,int bufferSize,int nChanels);
     
-    int sampleRate;
-    float pan;
-    float amp;
-    float phase;
-    float frequency;
+        int sampleRate;
+        float pan;
+        float amp;
+        float phase;
+        float frequency;
 
 };
 

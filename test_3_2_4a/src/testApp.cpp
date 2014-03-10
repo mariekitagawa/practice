@@ -2,6 +2,13 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
+    
+    sampleRate = 44100;
+    amp = 0.5;
+    pan = 0.5;
+    phase = 0;
+    frequency = 440;
+    ofSoundStreamSetup(2.0);
 
 }
 
@@ -49,13 +56,21 @@ void testApp::mouseReleased(int x, int y, int button){
 void testApp::windowResized(int w, int h){
 
 }
-
-//--------------------------------------------------------------
-void testApp::gotMessage(ofMessage msg){
-
+void testApp::audioRewuested(float*output, int bufferSize, int nChannels){
+    float sample;
+    float phaseDiff;
+    
+    phaseDiff = TWO_PI*frequency/sampleRate;
+    
+    for (int i=0;i<bufferSize;i++) {
+        phase +=phaseDiff;
+        while (phase > TWO_PI) {
+            phase -= TWO_PI;
+            }
+        sample = sin(phase);
+        output[i*nChannels]=sample*pan*amp;
+        output[i*nChannels+1]=sample*pan*amp;
+    
+        }
 }
 
-//--------------------------------------------------------------
-void testApp::dragEvent(ofDragInfo dragInfo){ 
-
-}
